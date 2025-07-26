@@ -75,14 +75,15 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
 <script>
-window.addEventListener('message', function(event) {
-  // Seguridad: valida que venga de tu dominio de Wix si quieres
-  // if (event.origin !== 'https://tusitio.wixsite.com') return;
-  if (event.data && event.data.action === 'set-data') {
-    document.getElementById('nameTag').textContent = event.data.name;
-    document.getElementById('dynamicImage').src = event.data.img;
-  }
-  // Puedes agregar más campos según lo necesites
-});
+  window.addEventListener('message', function(event) {
+    if (event.data === 'generate-png') {
+      htmlToImage.toPng(document.getElementById('mainContainer'))
+        .then(function(dataUrl) {
+          // Responde a Wix con el PNG como DataURL
+          parent.postMessage({ type: 'generated-png', dataUrl: dataUrl }, '*');
+        });
+    }
+  });
 </script>
