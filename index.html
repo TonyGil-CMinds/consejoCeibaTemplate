@@ -1,0 +1,76 @@
+<!-- No modificar los estilos -->
+<!-- la imagen resultante tiene que ser de 1080x1920 -->
+
+<div style = "
+    
+    width: 540px;
+    height: 670px;
+    background-image: url('https://static.wixstatic.com/media/fd7443_3ce682ceb8a74c5b8cc496701e4f0aab~mv2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+">
+    <div style="
+        background-color: beige;
+        width: max-content;
+        height: auto;
+        border-radius: 10px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 170px;
+        right: 250px;
+        z-index: 1;
+    ">
+    <!-- Este texto es dinamico -->
+    <p id="participantName" style="
+        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+        margin: 10px 15px;
+        font-size: 13px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        text-transform: uppercase;
+    
+    ">Constanza Gómez Mont</p>
+
+    </div>   
+    <!-- Esta imagen es statica y no debe tener ningun id para modificarla -->
+    <picture style="
+        position:absolute;
+        bottom: 150px;
+        right: 250px;
+        z-index: 1;
+    ">
+        <img src="https://static.wixstatic.com/shapes/fd7443_e9242ff8c3814575abdd57249dfab19f.svg" alt="">
+    </picture>
+
+    <div style="
+        background-color: red;
+        height: 390px;
+        width: 270px;
+        border-radius: 999px;
+        position: absolute;
+        top: 160px;
+        left:125px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    ">
+
+    <!-- Esta imagen debe ser dinámica -->
+    <picture>
+        <img 
+        style="
+            height: 100%;
+        "
+        id="participantImage" src="https://static.wixstatic.com/media/15ee0b_7a29f026fe914e9b8f23ff63956888ef~mv2.png" alt="imagen-de-perfil">
+    </picture>
+
+    </div>
+
+</div>
