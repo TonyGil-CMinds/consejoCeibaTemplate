@@ -74,3 +74,15 @@
     </div>
 
 </div>
+
+<script>
+window.addEventListener('message', function(event) {
+  // Seguridad: valida que venga de tu dominio de Wix si quieres
+  // if (event.origin !== 'https://tusitio.wixsite.com') return;
+  if (event.data && event.data.action === 'set-data') {
+    document.getElementById('nameTag').textContent = event.data.name;
+    document.getElementById('dynamicImage').src = event.data.img;
+  }
+  // Puedes agregar más campos según lo necesites
+});
+</script>
