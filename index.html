@@ -75,15 +75,27 @@
 
 </div>
 
+<!-- ... Tu HTML ... -->
+<button id="download">Descargar PNG</button>
 <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
 <script>
+  document.getElementById('download').onclick = function() {
+    htmlToImage.toPng(document.getElementById('mainContainer'))
+      .then(function(dataUrl) {
+        let link = document.createElement('a');
+        link.download = 'badge.png';
+        link.href = dataUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+  };
+
+  // Escuchar mensajes para actualizar badge dinámicamente (opcional)
   window.addEventListener('message', function(event) {
-    if (event.data === 'generate-png') {
-      htmlToImage.toPng(document.getElementById('mainContainer'))
-        .then(function(dataUrl) {
-          // Responde a Wix con el PNG como DataURL
-          parent.postMessage({ type: 'generated-png', dataUrl: dataUrl }, '*');
-        });
+    if(event.data && event.data.action === 'set-data') {
+      document.getElementById('nameTag').textContent = event.data.name;
+      document.getElementById('dynamicImage').src = event.data.img;
     }
   });
 </script>
